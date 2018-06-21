@@ -17,8 +17,8 @@
 
 set -e
 
-DEVICE=oneplus6
-VENDOR=oneplus
+DEVICE=nx609j
+VENDOR=nubia
 
 # Load extractutils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"

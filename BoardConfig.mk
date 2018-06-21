@@ -69,7 +69,7 @@ BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET     := 0x01000000
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 TARGET_KERNEL_SOURCE := kernel/nubia/nx609j
-TARGET_KERNEL_CONFIG := msmcortex-perf-NX609J_defconfig
+TARGET_KERNEL_CONFIG := omni_nx609j_defconfig
 TARGET_KERNEL_APPEND_DTB := true
 BOARD_ROOT_EXTRA_FOLDERS := bt_firmware firmware dsp persist embedlog
 

@@ -19,8 +19,8 @@
 set -e
 
 # Required!
-DEVICE=oneplus6
-VENDOR=oneplus
+DEVICE=nx609j
+VENDOR=nubia
 
 INITIAL_COPYRIGHT_YEAR=2018
 
@@ -41,7 +41,7 @@ fi
 setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
 
 # Copyright headers and guards
-write_headers "oneplus6"
+write_headers "nx609j"
 
 # The standard blobs
 write_makefiles "$MY_DIR"/proprietary-files.txt

@@ -182,14 +182,7 @@ on post-fs-data
     setprop persist.sys.systrace.success 1
 
     # Nubia add set property sys.android.reboot flag to 0
-    setprop sys.android.reboot 0
-
-service systrace /system/bin/systrace
-    class core
-    user root
-    group root
-    critical
-    socket systrace seqpacket 0660 system system
+    #setprop sys.android.reboot 0
 
 # nubia Disable SSR to SoC restart
 on property:persist.sys.ssr.restart_level=1

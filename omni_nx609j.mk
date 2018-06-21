@@ -43,8 +43,6 @@ $(call inherit-product, device/nubia/nx609j/device.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/nubia/nubia/overlay/device
 
-PRODUCT_PROPERTY_OVERRIDES += ro.hardware.nfc_nci=nqx.default
-
 ALLOW_MISSING_DEPENDENCIES := true
 
 PRODUCT_PACKAGES += \
@@ -60,7 +58,7 @@ PRODUCT_MODEL := NUBIA_NX609J
 PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=nx609j PRODUCT_NAME=NUBIA_NX609J
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_FINGERPRINT=OnePlus/OnePlus6/OnePlus6:8.1.0/OPM1.171019.011/06140300:user/release-keys \
-    PRIVATE_BUILD_DESC="OnePlus6-user 8.1.0 OPM1.171019.011 273 release-keys"
+    BUILD_FINGERPRINT=nubia/NX609J/NX609J:8.1.0/OPM1.171019.011/eng.nubia.20180614.113014:user/release-keys \
+    PRIVATE_BUILD_DESC="NX609J-user 8.1.0 OPM1.171019.011 eng.nubia.20180614.113014 release-keys"
 
 TARGET_VENDOR := nubia

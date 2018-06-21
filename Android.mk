@@ -73,19 +73,19 @@ ALL_DEFAULT_INSTALLED_MODULES += $(IMS_SYMLINKS)
 #
 #ALL_DEFAULT_INSTALLED_MODULES += $(BT_FIRMWARE_SYMLINKS)
 #
-#$(shell mkdir -p $(TARGET_OUT_VENDOR)/etc/firmware/wcd9320; \
-#        ln -sf /data/vendor/misc/audio/wcd9320_anc.bin \
-#                $(TARGET_OUT_VENDOR)/etc/firmware/wcd9320/wcd9320_anc.bin;\
-#        ln -s /data/vendor/misc/audio/mbhc.bin \
-#                $(TARGET_OUT_VENDOR)/etc/firmware/wcd9320/wcd9320_mbhc.bin; \
-#        ln -s /data/vendor/misc/audio/wcd9320_mad_audio.bin \
-#                $(TARGET_OUT_VENDOR)/etc/firmware/wcd9320/wcd9320_mad_audio.bin)
-#
-## Create symbolic links for msadp
-#$(shell  mkdir -p $(TARGET_OUT_VENDOR)/firmware; \
-#	ln -sf /dev/block/bootdevice/by-name/msadp \
-#	$(TARGET_OUT_VENDOR)/firmware/msadp)
-#
+$(shell mkdir -p $(TARGET_OUT_VENDOR)/etc/firmware/wcd9320; \
+        ln -sf /data/vendor/misc/audio/wcd9320_anc.bin \
+                $(TARGET_OUT_VENDOR)/etc/firmware/wcd9320/wcd9320_anc.bin;\
+        ln -s /data/vendor/misc/audio/mbhc.bin \
+                $(TARGET_OUT_VENDOR)/etc/firmware/wcd9320/wcd9320_mbhc.bin; \
+        ln -s /data/vendor/misc/audio/wcd9320_mad_audio.bin \
+                $(TARGET_OUT_VENDOR)/etc/firmware/wcd9320/wcd9320_mad_audio.bin)
+
+# Create symbolic links for msadp
+$(shell  mkdir -p $(TARGET_OUT_VENDOR)/firmware; \
+	ln -sf /dev/block/bootdevice/by-name/msadp \
+	$(TARGET_OUT_VENDOR)/firmware/msadp)
+
 #-include device/nubia/nubia/tftp.mk
 
 endif
