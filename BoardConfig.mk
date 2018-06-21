@@ -18,36 +18,27 @@
 # device-specific aspects (drivers) with a device-agnostic
 # product configuration (apps).
 #
-include build/make/target/board/generic_arm64_ab/BoardConfig.mk
-BOARD_PATH := device/oneplus/oneplus6
+include build/make/target/board/generic_arm64_a/BoardConfig.mk
+BOARD_PATH := device/nubia/nx609j
 
 PRODUCT_FULL_TREBLE := true
 BOARD_VNDK_VERSION := current
 PRODUCT_SHIPPING_API_LEVEL := 27
 TARGET_NO_KERNEL := false
-BOARD_AVB_ENABLE := false
-BOARD_BUILD_DISABLED_VBMETAIMAGE := true
+BOARD_BUILD_DISABLED_VBMETAIMAGE := false
 BOARD_SEPOLICY_VERS := 30
-#BOARD_USES_VENDORIMAGE := true
-
-# Enable A/B update
-TARGET_NO_RECOVERY := true
-BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
-AB_OTA_PARTITIONS ?= boot system
-BOARD_USES_RECOVERY_AS_BOOT := true
-AB_OTA_UPDATER := true
+PRODUCT_SUPPORTS_VERITY := true
 
 TARGET_USE_SDCLANG := true
 TARGET_NO_BOOTLOADER := true
-TARGET_OTA_ASSERT_DEVICE := oneplus6,enchilada
+TARGET_OTA_ASSERT_DEVICE := nx609j
 TARGET_KERNEL_VERSION := 4.9
 TARGET_KERNEL_CLANG_COMPILE := false
-TARGET_BOOTLOADER_BOARD_NAME := sdm845
+TARGET_BOOTLOADER_BOARD_NAME := msm8998
 #TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
-TARGET_NEEDS_DTBOIMAGE := true
 
 # Platform
-TARGET_BOARD_PLATFORM := sdm845
+TARGET_BOARD_PLATFORM := msm8998
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno630
 
 # Architecture
@@ -70,25 +61,22 @@ TARGET_COMPILE_WITH_MSM_KERNEL := true
 ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
 
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 service_locator.enable=1 swiotlb=2048 androidboot.configfs=true androidboot.usbcontroller=a600000.dwc3
-#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 sched_enable_hmp=1 sched_enable_power_aware=1 service_locator.enable=1 swiotlb=2048 androidboot.configfs=true androidboot.usbcontroller=a800000.dwc3
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
-BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
-BOARD_RAMDISK_OFFSET     := 0x02000000
-BOARD_ROOT_EXTRA_FOLDERS := firmware bt_firmware odm persist op1 op2
-TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+BOARD_KERNEL_TAGS_OFFSET := 0x00000100
+BOARD_RAMDISK_OFFSET     := 0x01000000
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
+TARGET_KERNEL_SOURCE := kernel/nubia/nx609j
+TARGET_KERNEL_CONFIG := msmcortex-perf-NX609J_defconfig
 TARGET_KERNEL_APPEND_DTB := true
-TARGET_KERNEL_SOURCE := kernel/oneplus/sdm845
-TARGET_KERNEL_CONFIG := omni_oneplus6_defconfig
+BOARD_ROOT_EXTRA_FOLDERS := bt_firmware firmware dsp persist embedlog
 
 # partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
-#BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
-#BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
+BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2998927360
 BOARD_VENDORIMAGE_PARTITION_SIZE := 1073741824
 #BOARD_USERDATAIMAGE_PARTITION_SIZE := 10737418240
@@ -100,7 +88,7 @@ TARGET_SPECIFIC_HEADER_PATH := $(BOARD_PATH)/include
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_USES_QCOM_BSP := false
 TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_USERIMAGES_USE_F2FS := false
+TARGET_USERIMAGES_USE_F2FS := true
 
 # Camera
 TARGET_USES_QTI_CAMERA2CLIENT := true
@@ -217,6 +205,3 @@ TW_MAX_BRIGHTNESS := 255
 TW_NO_USB_STORAGE := false
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_THEME := portrait_hdpi
-# Workaround for error copying vendor files to recovery ramdisk
-BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
-#TARGET_COPY_OUT_VENDOR := vendor

@@ -39,9 +39,9 @@ TARGET_BOOTANIMATION_SIZE := 1080p
 $(call inherit-product, vendor/omni/config/common.mk)
 
 # Inherit from hardware-specific part of the product configuration
-$(call inherit-product, device/oneplus/oneplus6/device.mk)
+$(call inherit-product, device/nubia/nx609j/device.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/oneplus/oneplus6/overlay/device
+DEVICE_PACKAGE_OVERLAYS += device/nubia/nubia/overlay/device
 
 PRODUCT_PROPERTY_OVERRIDES += ro.hardware.nfc_nci=nqx.default
 
@@ -51,16 +51,16 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := omni_oneplus6
-PRODUCT_DEVICE := oneplus6
-PRODUCT_BRAND := OnePlus
-PRODUCT_MANUFACTURER := OnePlus
-PRODUCT_MODEL := ONEPLUS A6000
+PRODUCT_NAME := omni_nx609j
+PRODUCT_DEVICE := nx609j
+PRODUCT_BRAND := Nubia
+PRODUCT_MANUFACTURER := Nubia
+PRODUCT_MODEL := NUBIA_NX609J
 
-PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=OnePlus6 PRODUCT_NAME=OnePlus6
+PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=nx609j PRODUCT_NAME=NUBIA_NX609J
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT=OnePlus/OnePlus6/OnePlus6:8.1.0/OPM1.171019.011/06140300:user/release-keys \
     PRIVATE_BUILD_DESC="OnePlus6-user 8.1.0 OPM1.171019.011 273 release-keys"
 
-TARGET_VENDOR := oneplus
+TARGET_VENDOR := nubia

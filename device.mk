@@ -19,31 +19,12 @@
 # device-specific aspects (drivers) with a device-agnostic
 # product configuration (apps).
 #
-$(call inherit-product, vendor/oneplus/oneplus6/device-vendor.mk)
-$(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
+$(call inherit-product, vendor/nubia/nx609j/device-vendor.mk)
+#$(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
 $(call inherit-product, vendor/omni/config/phone-xxhdpi-4096-dalvik-heap.mk)
 $(call inherit-product, vendor/omni/config/phone-xxhdpi-2048-hwui-memory.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/oneplus/oneplus6/overlay/common
-
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.build.version.all_codenames=$(PLATFORM_VERSION_ALL_CODENAMES) \
-    ro.build.version.codename=$(PLATFORM_VERSION_CODENAME) \
-    ro.build.version.release=$(PLATFORM_VERSION) \
-    ro.build.version.sdk=$(PLATFORM_SDK_VERSION)
-
-AB_OTA_POSTINSTALL_CONFIG += \
-    RUN_POSTINSTALL_system=true \
-    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
-    FILESYSTEM_TYPE_system=ext4 \
-    POSTINSTALL_OPTIONAL_system=true
-
-PRODUCT_PACKAGES += \
-    otapreopt_script
-
-PRODUCT_PACKAGES += \
-    update_engine \
-    update_verifier
+DEVICE_PACKAGE_OVERLAYS += device/nubia/nx609j/overlay/common
 
 PRODUCT_PACKAGES += \
     omni_charger_res_images
@@ -106,8 +87,8 @@ PRODUCT_COPY_FILES += \
 
 # Prebuilt
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,device/oneplus/oneplus6/prebuilt/system,system) \
-    $(call find-copy-subdir-files,*,device/oneplus/oneplus6/prebuilt/root,root)
+    $(call find-copy-subdir-files,*,device/nubia/nx609j/prebuilt/system,system) \
+    $(call find-copy-subdir-files,*,device/nubia/nx609j/prebuilt/root,root)
 
 
 PRODUCT_AAPT_CONFIG := xxhdpi
@@ -125,15 +106,15 @@ PRODUCT_CHARACTERISTICS := nosdcard
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
-    device/oneplus/oneplus6/keylayout/fpc1020.kl:system/usr/keylayout/fpc1020.kl \
-    device/oneplus/oneplus6/keylayout/gf_input.kl:system/usr/keylayout/gf_input.kl
+    device/nubia/nx609j/keylayout/fpc1020.kl:system/usr/keylayout/fpc1020.kl \
+    device/nubia/nx609j/keylayout/gf_input.kl:system/usr/keylayout/gf_input.kl
 
 # Lights
 PRODUCT_PACKAGES += \
-    lights.oneplus6
+    lights.nx609j
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hardware.lights=oneplus6
+    ro.hardware.lights=nx609j
 
 PRODUCT_PACKAGES += \
     android.hardware.light-V2.0-java \
@@ -178,7 +159,7 @@ PRODUCT_PACKAGES += \
 
 # power
 PRODUCT_PACKAGES += \
-    power.oneplus6
+    power.nx609j
 
 # ANT+
 PRODUCT_PACKAGES += \
@@ -217,10 +198,6 @@ PRODUCT_PACKAGES += \
 #PRODUCT_PACKAGES += \
     vndk-sp
 
-# Update engine
-PRODUCT_PACKAGES += \
-    brillo_update_payload
-
 PRODUCT_PACKAGES += \
     android.hidl.manager@1.0-java \
     android.hidl.base@1.0
@@ -239,6 +216,9 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/media_codecs_google_video.xml
 
+PRODUCT_PACKAGES += \
+    verity_key
+
 PRODUCT_PACKAGE_OVERLAYS += vendor/omni/overlay/CarrierConfig
 
 # Temporary handling
@@ -247,8 +227,8 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/omni/overlay/CarrierConfig
 # does not exist as they are mutually exclusive.  Once all target's android_filesystem_config.h
 # have been removed, TARGET_FS_CONFIG_GEN should be made unconditional.
 DEVICE_CONFIG_DIR := $(dir $(firstword $(subst ]],, $(word 2, $(subst [[, ,$(_node_import_context))))))
-ifeq ($(wildcard device/oneplus/oneplus6/android_filesystem_config.h),)
-  TARGET_FS_CONFIG_GEN := device/oneplus/oneplus6/config.fs
+ifeq ($(wildcard device/nubia/nx609j/android_filesystem_config.h),)
+  TARGET_FS_CONFIG_GEN := device/nubia/nx609j/config.fs
 else
   $(warning **********)
   $(warning TODO: Need to replace legacy $(DEVICE_CONFIG_DIR)android_filesystem_config.h with config.fs)
