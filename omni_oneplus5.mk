@@ -36,13 +36,13 @@ TARGET_BOOTANIMATION_SIZE := 1080p
 $(call inherit-product, vendor/omni/config/common.mk)
 
 # Inherit from hardware-specific part of the product configuration
-$(call inherit-product, device/oneplus/oneplus5/device.mk)
+$(call inherit-product, device/oneplus/dumpling/device.mk)
 
 PRODUCT_PROPERTY_OVERRIDES += ro.hardware.nfc_nci=nqx.default
 
 ALLOW_MISSING_DEPENDENCIES := true
 
-DEVICE_PACKAGE_OVERLAYS += device/oneplus/oneplus5/overlay/device
+DEVICE_PACKAGE_OVERLAYS += device/oneplus/dumpling/overlay/device
 
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service
